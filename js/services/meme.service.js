@@ -1,4 +1,37 @@
-'use-strict'
+let gCircle
+
+function createCircle(pos) {
+  gCircle = {
+    pos,
+    size: 20,
+    color: 'blue',
+    isDrag: false
+  }
+}
+
+function getCircle() {
+  return gCircle
+}
+
+//Check if the click is inside the circle 
+function isCircleClicked(clickedPos) {
+  const { pos } = gCircle
+  // Calc the distance between two dots
+  const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+  //If its smaller then the radius of the circle we are inside
+  return distance <= gCircle.size
+}
+
+
+function setCircleDrag(isDrag) {
+  gCircle.isDrag = isDrag
+}
+
+//Move the circle in a delta, diff from the pervious pos
+function moveCircle(dx, dy) {
+  gCircle.pos.x += dx
+  gCircle.pos.y += dy
+}
 
 var gKeywordSearchCountMap =
     { 'funny': 0, 'trump': 0, 'cute': 0, 'baby': 0, 'akward': 0, 'animal': 0, 'happy': 0 }
@@ -32,20 +65,51 @@ var gMeme = {
             txt: '',
             size: 20,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            pos: {x:0, y:0}
         }
     ]
 }
 
 function getMeme() {
-    return gMeme
+  return gMeme
 }
 
-function setLineTxt(txt){
-   var currLine = getCuurLine()
-   currLine.txt = txt
+function createLine(pos) {
+  var line = {
+    txt: '',
+    size: 20,
+    align: 'left',
+    color: 'red',
+    pos,
+    isDrag: false
+  }
+
+  gMeme.lines.push(line)
 }
 
-function getCuurLine(){
-    return gMeme.lines[gMeme.selectedLineIdx]
+function getCurrLine() {
+  return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function isLineClicked(clickedPos) {
+  const { pos } = getCurrLine()
+  const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
+  return distance <= getCurrLine().size
+}
+
+function setCurrLineDrag(isDrag) {
+  var currLine = getCurrLine()
+  currLine.isDrag = isDrag
+}
+
+function moveCurrLine(dx, dy) {
+  var currLine = getCurrLine()
+  currLine.pos.x += dx
+  currLine.pos.y += dy
+}
+
+function setCurrLineTxt(txt){
+  var currLine = getCurrLine()
+  currLine.txt = txt
 }

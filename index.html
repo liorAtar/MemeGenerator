@@ -18,7 +18,7 @@
         </nav>
     </header>
 
-    <section class="editor"> 
+    <section class="editor flex"> 
         <div class="canvas-container">
             <canvas
               id="my-canvas"
@@ -27,8 +27,13 @@
             ></canvas>
           </div>
           <div class="edit-canvas">
-            <h1>Hello</h1>
-            <input type="text" placeholder="Enter Text" oninput="textInputChanged(this)"/>
+            <input type="text" placeholder="Enter Text" oninput="textInputChanged(this)" onfocusout=""/>
+            <div class="text-prefs">
+                Prefs
+            </div>
+            <div class="text-styles">
+                Styles
+            </div>
           </div>
     </section>
 
@@ -36,5 +41,6 @@
 
     <script src="js/services/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/controller2.js"></script>
 </body>
 </html>
