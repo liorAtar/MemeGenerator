@@ -51,12 +51,19 @@ function createLine(pos) {
   }
 
   gMeme.lines.push(line)
+  setCurrLine(gMeme.lines.length - 1)
+  // gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function getCurrLine() {
   return gMeme.lines[gMeme.selectedLineIdx]
 }
 
+function setCurrLine(idx) {
+  gMeme.selectedLineIdx = idx
+}
+
+// TODO: Delete?
 function isLineClicked(clickedPos) {
   const { pos } = getCurrLine()
   const distance = Math.sqrt((pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2)
