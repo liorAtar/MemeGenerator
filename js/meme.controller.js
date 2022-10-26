@@ -1,5 +1,6 @@
 'use-strict'
 
+let gSelectedTab = 'home'
 let gElCanvas
 let gCtx
 let gInitPos
@@ -8,6 +9,8 @@ const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 function onInit() {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
+    document.querySelector('.gallery').style.display = 'none'
+
     resizeCanvas()
 
     addListeners()
@@ -16,6 +19,24 @@ function onInit() {
     // RECT
     gInitPos = { x: 0, y: 0 }
     initialPos()
+    renderGallery()
+}
+
+function setSelectedTab(ev, selectedTabs) {
+    console.log(selectedTabs)
+
+    switch (selectedTabs) {
+        case 'Home':
+            document.querySelector('.editor').style.display = 'block'
+            document.querySelector('.gallery').style.display = 'none'
+            break
+        case 'Gallery':
+            document.querySelector('.gallery').style.display = 'block'
+            document.querySelector('.editor').style.display = 'none'
+            break
+        case 'About':
+            break
+    }
 }
 
 /**

@@ -9,11 +9,11 @@
 </head>
 <body onload="onInit()">
     <header>
-        <div class="logo">Blogin</div>
+        <div class="logo" onclick="setSelectedTab(this, 'Home')">Blogin</div>
         <nav class="main-nav">
             <ul class="">
-                <li class="nav-item"><a href="#">Gallery</a></li>
-                <li class="nav-item"><a href="#">About</a></li>
+                <li class="nav-item" onclick="setSelectedTab(this, 'Gallery')"><a href="#Gallery">Gallery</a></li>
+                <li class="nav-item" onclick="setSelectedTab(this, 'About')"><a href="#About">About</a></li>
             </ul>
         </nav>
     </header>
@@ -45,10 +45,15 @@
           </div>
     </section>
 
-    <section class="gallery"> </section>
+    <section class="gallery">
+        <div class="imgs grid">
+
+        </div>
+    </section>
 
     <script src="js/services/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/prefs.controller.js"></script>
+    <script src="js/gallery.controller.js"></script>
 </body>
 </html>
