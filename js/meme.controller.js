@@ -40,7 +40,7 @@ function renderCanvas() {
 function loadImg(onImageReady) {
     let currMeme = getMeme()
     let img = new Image() // Create a new html img element
-    img.src = `../img/${currMeme.selectedImgId}.jpg` // Set the img src to the img file we read
+    img.src = `/../img/${currMeme.selectedImgId}.jpg` // Set the img src to the img file we read
     img.onload = onImageReady.bind(null, img)
 }
 
