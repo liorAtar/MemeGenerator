@@ -12,9 +12,6 @@ function onInit() {
     addListeners()
     renderCanvas()
     initialPos()
-    // TODO: Add resize Canvad
-
-    var currLine = getCurrLine()
 }
 
 /**
@@ -122,7 +119,6 @@ function addTouchListeners() {
 }
 
 function onDown(ev) {
-    console.log('Im from onDown')
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
     if (!isLineClicked(pos)) return
@@ -133,7 +129,6 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-    console.log('Im from onMove')
     const { isDrag } = getCurrLine()
     if (!isDrag) return
     const pos = getEvPos(ev)
@@ -148,7 +143,6 @@ function onMove(ev) {
 }
 
 function onUp() {
-    console.log('Im from onUp')
     setCurrLineDrag(false)
     document.body.style.cursor = 'grab'
   }
