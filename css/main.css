@@ -1,0 +1,25 @@
+.editor {
+    display: flex;
+    justify-content: space-around;
+}
+
+.canvas-container {
+    width:40vw;
+}
+
+.edit-canvas {
+    background-color: lightblue;
+    width: 50vw;
+}
+
+@media screen and (max-width: 500px) {
+    .editor {
+        justify-content: center;
+        display: block;
+    }
+    
+    .canvas-container {
+        width: 80vw;
+        height: auto;
+    }
+}

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="onInit()">
     <header>
         <div class="logo">Blogin</div>
         <nav class="main-nav">
@@ -16,7 +17,22 @@
             </ul>
         </nav>
     </header>
-    <section class="editor"> </section>
+
+    <section class="editor"> 
+        <div class="canvas-container">
+            <canvas
+              id="my-canvas"
+              height="450"
+              width="450"
+            ></canvas>
+          </div>
+          <div class="edit-canvas">
+            <h1>Hello</h1>
+          </div>
+    </section>
+
     <section class="gallery"> </section>
+
+    <script src="js/meme.controller.js"></script>
 </body>
 </html>
