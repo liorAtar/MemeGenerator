@@ -1,3 +1,5 @@
+'use-strict'
+
 var gKeywordSearchCountMap =
     { 'funny': 0, 'trump': 0, 'cute': 0, 'baby': 0, 'akward': 0, 'animal': 0, 'happy': 0 }
 
@@ -28,8 +30,8 @@ var gMeme = {
     lines: [
         {
             txt: '',
-            size: 20,
-            align: 'left',
+            size: 60,
+            align: 'center',
             color: 'red',
             pos: {x:0, y:0}
         }
@@ -44,7 +46,7 @@ function createLine(pos) {
   var line = {
     txt: '',
     size: 20,
-    align: 'left',
+    align: 'center',
     color: 'red',
     pos,
     isDrag: false
@@ -71,17 +73,36 @@ function isLineClicked(clickedPos) {
 }
 
 function setCurrLineDrag(isDrag) {
-  var currLine = getCurrLine()
+  const currLine = getCurrLine()
   currLine.isDrag = isDrag
 }
 
 function moveCurrLine(dx, dy) {
-  var currLine = getCurrLine()
+  const currLine = getCurrLine()
   currLine.pos.x += dx
   currLine.pos.y += dy
 }
 
 function setCurrLineTxt(txt){
-  var currLine = getCurrLine()
+  const currLine = getCurrLine()
   currLine.txt = txt
+}
+
+function deleteLine(idx) {
+  gMeme.lines.splice(idx, 1)
+}
+
+function sizeUp(){
+  const currLine = getCurrLine()
+  currLine.size += 5
+}
+
+function sizeDown(){
+  const currLine = getCurrLine()
+  currLine.size -= 5
+}
+
+function alignCurrLine(txt){
+  const currLine = getCurrLine()
+  currLine.align = txt
 }

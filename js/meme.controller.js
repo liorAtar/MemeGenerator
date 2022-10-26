@@ -40,7 +40,7 @@ function renderCanvas() {
 function loadImg(onImageReady) {
     let currMeme = getMeme()
     let img = new Image() // Create a new html img element
-    img.src = gImgs[currMeme.selectedImgId - 1].url // Set the img src to the img file we read
+    img.src = gImgs[currMeme.selectedImgId - 1].url // Set the img src to the selected img file
     img.onload = onImageReady.bind(null, img)
 }
 
@@ -49,10 +49,6 @@ function initialPos() {
     const currLine = getCurrLine()
     currLine.pos.x = 0
     currLine.pos.y = 0
-
-    // gInitPos = { x: gElCanvas.width / 2, y: currLine.size }
-    // currLine.pos.x = gInitPos.x
-    // currLine.pos.y = gInitPos.y
 }
 
 /**
@@ -60,13 +56,11 @@ function initialPos() {
  */
 function renderMeme(img) {
     var meme = getMeme()
-    // var currLine = getCurrLine()
-
     var canvasHeight = (img.height * gElCanvas.width) / img.width
     gElCanvas.height = canvasHeight
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
-    meme.lines.map(line => drawText(line.txt, line.pos.x, line.pos.y))
+    meme.lines.map(line => drawText(line))
 }
 
 /**
@@ -74,7 +68,7 @@ function renderMeme(img) {
  * @param {*} ev 
  */
 function textInputChanged(ev) {
-    var txt = ev.value
+    const txt = ev.value
     setCurrLineTxt(txt)
     renderCanvas()
 }
@@ -85,25 +79,20 @@ function textInputChanged(ev) {
  * @param {*} x 
  * @param {*} y 
  */
-function drawText(text, x, y) {
-    const currLine = getCurrLine()
-
+function drawText({ txt, pos, size, color, align }) {
+    // const currLine = getCurrLine()
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = currLine.color
+    gCtx.fillStyle = color
 
-    gCtx.textAlign = "center"
-    gCtx.font = `${currLine.size}px Impact`
+    gCtx.textAlign = align
+    gCtx.font = `${size}px Impact`
 
-    // RECT
-    // gCtx.fillRect(x, y, gElCanvas.width, currLine.size)
+    var lineHeight = size * 1.286;
+    gCtx.fillText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 2)) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 2)) // Draws (strokes) a given text at the given (x, y) position.
 
-    var lineHeight = currLine.size * 1.286;
-
-    gCtx.fillText(text, x + (gElCanvas.width / 2), y + lineHeight / 2 + (currLine.size / 2)) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(text, x + (gElCanvas.width / 2), y + lineHeight / 2 + (currLine.size / 2)) // Draws (strokes) a given text at the given (x, y) position.
-
-    gCtx.strokeRect(x, y, gElCanvas.width, lineHeight);
+    gCtx.strokeRect(pos.x, pos.y, gElCanvas.width, lineHeight);
 }
 
 const calcFontMetrics = (ctx, text) => {
@@ -123,9 +112,9 @@ const calcFontMetrics = (ctx, text) => {
 
 function renderLine() {
     //Get the props we need from the circle 
-    const { pos, txt } = getCurrLine()
+    const currLine = getCurrLine()
     //Draw the circle
-    drawText(txt, pos.x, pos.y)
+    drawText(currLine)
 }
 
 //Handle the listeners
@@ -170,13 +159,13 @@ function onDown(ev) {
 
 function isClicked(ev) {
     var meme = getMeme()
-    
+
     const pos = getEvPos(ev)
 
     const idx = meme.lines.findIndex(line => {
         // Check if the click coordinates are inside the bar coordinates
-        return pos.x > line.pos.x && pos.x< line.pos.x + gElCanvas.width &&
-        pos.y > line.pos.y && pos.y < line.pos.y + line.size
+        return pos.x > line.pos.x && pos.x < line.pos.x + gElCanvas.width &&
+            pos.y > line.pos.y && pos.y < line.pos.y + line.size
     })
     console.log('idx', idx)
 
