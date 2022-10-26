@@ -46,7 +46,7 @@ function loadImg(onImageReady) {
 
 function initialPos() {
     // RECT
-    currLine = getCurrLine()
+    const currLine = getCurrLine()
     currLine.pos.x = 0
     currLine.pos.y = 0
 
@@ -86,7 +86,7 @@ function textInputChanged(ev) {
  * @param {*} y 
  */
 function drawText(text, x, y) {
-    var currLine = getCurrLine()
+    const currLine = getCurrLine()
 
     gCtx.lineWidth = 1
     gCtx.strokeStyle = 'black'
@@ -100,26 +100,26 @@ function drawText(text, x, y) {
 
     var lineHeight = currLine.size * 1.286;
 
-    gCtx.fillText(text, x + (gElCanvas.width / 2), y + lineHeight) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(text,  x + (gElCanvas.width / 2), y + lineHeight) // Draws (strokes) a given text at the given (x, y) position.
+    gCtx.fillText(text, x + (gElCanvas.width / 2), y + lineHeight / 2 + (currLine.size / 2)) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(text, x + (gElCanvas.width / 2), y + lineHeight / 2 + (currLine.size / 2)) // Draws (strokes) a given text at the given (x, y) position.
 
     gCtx.strokeRect(x, y, gElCanvas.width, lineHeight);
 }
 
 const calcFontMetrics = (ctx, text) => {
     const {
-      actualBoundingBoxAscent: abba,
-      actualBoundingBoxDescent: abbd,
-      fontBoundingBoxAscent: fbba,
-      fontBoundingBoxDescent: fbbd,
-      width
+        actualBoundingBoxAscent: abba,
+        actualBoundingBoxDescent: abbd,
+        fontBoundingBoxAscent: fbba,
+        fontBoundingBoxDescent: fbbd,
+        width
     } = ctx.measureText(text);
     return {
-      actualHeight: abba + abbd,
-      fontHeight: fbba + fbbd,
-      fontWidth: width
+        actualHeight: abba + abbd,
+        fontHeight: fbba + fbbd,
+        fontWidth: width
     };
-  };  
+};
 
 function renderLine() {
     //Get the props we need from the circle 
@@ -155,23 +155,30 @@ function onDown(ev) {
     //Get the ev pos from mouse or touch
     document.body.style.cursor = 'grab'
     console.log('ev', ev)
+
     const pos = getEvPos(ev)
     const lineIdx = isClicked(ev)
     if (lineIdx < 0) return
     setCurrLine(lineIdx)
+    console.log('entered')
     setCurrLineDrag(true)
     //Save the pos we start from 
     gStartPos = pos
+    document.querySelector('.txt-input').placeholder = getCurrLine().txt
+    document.querySelector('.txt-input').value = ''
 }
 
 function isClicked(ev) {
     var meme = getMeme()
+    
+    const pos = getEvPos(ev)
 
     const idx = meme.lines.findIndex(line => {
         // Check if the click coordinates are inside the bar coordinates
-        return ev.offsetX > line.pos.x && ev.offsetX < line.pos.x + gElCanvas.width &&
-            ev.offsetY > line.pos.y && ev.offsetY < line.pos.y + line.size
+        return pos.x > line.pos.x && pos.x< line.pos.x + gElCanvas.width &&
+        pos.y > line.pos.y && pos.y < line.pos.y + line.size
     })
+    console.log('idx', idx)
 
     return idx
 }
