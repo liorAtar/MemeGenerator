@@ -28,12 +28,12 @@ function setSelectedTab(ev, selectedTabs) {
 
     switch (selectedTabs) {
         case 'Home':
-            document.querySelector('.editor').style.display = 'flex'
+            document.querySelector('.main-editor').style.display = 'block'
             document.querySelector('.gallery').style.display = 'none'
             break
         case 'Gallery':
             document.querySelector('.gallery').style.display = 'block'
-            document.querySelector('.editor').style.display = 'none'
+            document.querySelector('.main-editor').style.display = 'none'
             break
         case 'About':
             break
@@ -78,7 +78,7 @@ function initialPos() {
  */
 function renderMeme(img) {
     var meme = getMeme()
-    var canvasHeight = (img.height * gElCanvas.width) / img.width 
+    var canvasHeight = (img.height * gElCanvas.width) / img.width
     gElCanvas.height = canvasHeight
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
@@ -113,8 +113,8 @@ function drawText({ txt, pos, size, color, stroke, font, align, isDrag }) {
     var lineHeight = size * 1.286;
     gCtx.fillText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 3)) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 3)) // Draws (strokes) a given text at the given (x, y) position.
-    
-    if(isDrag){
+
+    if (isDrag) {
         gCtx.strokeStyle = 'black'
         gCtx.strokeRect(pos.x, pos.y, gElCanvas.width, lineHeight);
     }

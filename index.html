@@ -10,8 +10,8 @@
 </head>
 
 <body onload="onInit()">
-    <header class="main-header flex">
-        <div class="logo" onclick="setSelectedTab(this, 'Home')">Blogin</div>
+    <header class="main-header flex space-around align-center">
+        <div class="logo" onclick="setSelectedTab(this, 'Home')">Meme Generator</div>
         <nav class="main-nav">
             <ul class="flex clean-list">
                 <li class="nav-item" onclick="setSelectedTab(this, 'Gallery')"><a href="#">Gallery</a></li>
@@ -20,47 +20,55 @@
         </nav>
     </header>
 
-    <section class="editor flex">
-        <div class="canvas-container">
-            <canvas id="my-canvas" height="250" width="250"></canvas>
-        </div>
-        <div class="edit-canvas">
-            <input class="txt-input" type="text" placeholder="Enter Text" oninput="textInputChanged(this)"
-                onfocusout="" />
-            <div class="txt-prefs flex">
-                <button onclick="moveUp()">Up</button>
-                <button onclick="moveDown()">Down</button>
-                <button onclick="addLine()">+</button>
-                <button onclick="nextLine()">Switch</button>
-                <button onclick="deleteSelectedLine()">Delete</button>
+    <main class="main-editor">
+        <section class="editor">
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="250" width="250"></canvas>
             </div>
-            <div class="txt-styles">
-                <button onclick="sizeUpText()">A+</button>
-                <button onclick="sizeDownText()">A-</button>
-                <button onclick="alignLeft()">↞</button>
-                <button onclick="alignCenter()">↕</button>
-                <button onclick="alignRight()">↠</button>
-                <input list="fonts" name="font" id="font" placeholder="Select Font" value="Impact"
-                    oninput="changeFont(this)">
-                <datalist id="fonts">
-                    <option value="Impact">
-                    <option value="Ariel">
-                </datalist>
-                <div class="stroke relative inline">
-                    <button><i>Stroke</i></button>
-                    <input type="color" class="color-palette" value="#ff0000" oninput="changeStroke(this)" />
+            <div class="edit-canvas">
+                <input class="txt-input" type="text" placeholder="Enter Text" oninput="textInputChanged(this)"
+                    onfocusout="" />
+                <div class="txt-prefs flex">
+                    <button class="btn up-btn" onclick="moveUp()">Up</button>
+                    <button class="btn down-btn" onclick="moveDown()">Down</button>
+                    <button class="btn add-btn" onclick="addLine()">+</button>
+                    <button class="btn switch-btn" onclick="nextLine()">Switch</button>
+                    <button class="btn delete-btn" onclick="deleteSelectedLine()">Delete</button>
                 </div>
-                <div class="fill relative inline">
-                    <button><i>Fill</i></button>
-                    <input type="color" class="color-palette" value="#ff0000" oninput="changeColor(this)" />
+                <div class="txt-styles">
+                    <div class="styles-line">
+                        <button class="btn-line-style" onclick="sizeUpText()">A+</button>
+                        <button class="btn-line-style" onclick="sizeDownText()">A-</button>
+                        <button class="btn-line-style" onclick="alignLeft()">↞</button>
+                        <button class="btn-line-style" onclick="alignCenter()">↕</button>
+                        <button class="btn-line-style" onclick="alignRight()">↠</button>
+                    </div>
+                    <div class="styles-line">
+                        <input list="fonts" name="font" id="font" placeholder="Select Font" value="Impact"
+                            oninput="changeFont(this)">
+                        <datalist id="fonts">
+                            <option value="Impact">
+                            <option value="Ariel">
+                        </datalist>
+                        <div class="stroke relative inline">
+                            <input type="color" class="color-palette" value="#ff0000" oninput="changeStroke(this)" />
+                            <button class="btn-line-style"><i>Stroke</i></button>
+                        </div>
+                        <div class="fill relative inline">
+                            <input type="color" class="color-palette" value="#ff0000" oninput="changeColor(this)" />
+                            <button class="btn-line-style"><i>Fill</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="export">
+                    <button class="btn-export btn-share">Share</button>
+                    <button class="btn-export btn-download">
+                        <a class="download" href="#" onclick="downloadMeme()" download="my-img.jpg">Download as jpeg</a>
+                    </button>
                 </div>
             </div>
-            <div class="export">
-                <button>Share</button>
-                <a href="#" class="btn download" onclick="downloadMeme()" download="my-img.jpg">Download as jpeg</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <section class="gallery">
         <div class="grid-container">

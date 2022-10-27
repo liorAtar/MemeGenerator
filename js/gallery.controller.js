@@ -12,6 +12,6 @@ function replaceMeme(idx){
     resetMeme()
     replaceImg(idx)
     renderCanvas()
-    document.querySelector('.editor').style.display = 'block'
+    document.querySelector('.main-editor').style.display = 'block'
     document.querySelector('.gallery').style.display = 'none'
 }
