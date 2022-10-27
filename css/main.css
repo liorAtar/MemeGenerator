@@ -179,6 +179,7 @@ input {
     border-radius: 10px;
     color: var(--clr0);
     background-color: var(--clr7);
+    border: 2px solid black;
 }
 
 .down-btn,
@@ -253,6 +254,12 @@ input {
 
 .btn-export {
     border-radius: 15px;
+    border: 2px solid black;
+}
+
+.btn-export a {
+    color: var(--clr0);
+    text-decoration: none;
 }
 
 .btn-share {
@@ -271,11 +278,6 @@ input {
 
 .btn-download:hover {
     background-image: linear-gradient(-38deg, rgb(185, 149, 231) 0%, #7b4bba 50%, #441269 100%);
-}
-
-.btn-download a {
-    color: var(--clr0);
-    text-decoration: none;
 }
 
 /* FOR MOBILE */
