@@ -187,14 +187,12 @@ body {
     }
 
     .grid-container {
-        display: grid;
-        grid-template-columns: max-content;
-        grid-auto-rows: max-content;
-        gap: 5px;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .grid-item{
-        width: auto;
+        width: -webkit-fill-available;
         height: auto;
     }
 }
