@@ -5,7 +5,7 @@ function renderGallery(){
 
     gImgs.map(img => strHTML+= `<img class="grid-item" src="${img.url}" alt="${img.id}" onclick="replaceMeme(${img.id})">`)
 
-    document.querySelector('.imgs').innerHTML = strHTML
+    document.querySelector('.grid-container').innerHTML = strHTML
 }
 
 function replaceMeme(idx){

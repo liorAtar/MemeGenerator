@@ -51,17 +51,41 @@ function sizeDownText() {
     renderCanvas()
 }
 
-function alignLeft(){
+function alignLeft() {
     alignCurrLine('right')
     renderCanvas()
 }
 
-function alignCenter(){
+function alignCenter() {
     alignCurrLine('center')
     renderCanvas()
 }
 
-function alignRight(){
+function alignRight() {
     alignCurrLine('left')
+    renderCanvas()
+}
+
+function changeFont(ev) {
+    const font = ev.value
+    if (font === "Impact" || font === "Ariel") {
+        updateCurrLineFont(font)
+        renderCanvas()
+    }
+}
+
+function resetValue(ev) {
+    ev.value = ''
+}
+
+function changeStroke(ev) {
+    const color = ev.value
+    updateCurrLineStroke(color)
+    renderCanvas()
+}
+
+function changeColor(ev) {
+    const color = ev.value
+    updateCurrLineColor(color)
     renderCanvas()
 }

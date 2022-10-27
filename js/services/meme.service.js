@@ -32,8 +32,11 @@ var gMeme = {
       txt: '',
       size: 20,
       align: 'center',
-      color: 'red',
-      pos: { x: 0, y: 0 }
+      color: 'white',
+      stroke: 'black',
+      font: 'Impact',
+      pos: { x: 0, y: 0 },
+      isDrag: false
     }
   ]
 }
@@ -47,7 +50,9 @@ function createLine(pos) {
     txt: '',
     size: 20,
     align: 'center',
-    color: 'red',
+    color: 'white',
+    stroke: 'black',
+    font: 'Impact',
     pos,
     isDrag: false
   }
@@ -66,15 +71,18 @@ function setCurrLine(idx) {
 }
 
 function resetMeme() {
-  gMeme.selectedImgId= 1
-  gMeme.selectedLineIdx= 0
-  gMeme.lines= [
+  gMeme.selectedImgId = 1
+  gMeme.selectedLineIdx = 0
+  gMeme.lines = [
     {
       txt: '',
       size: 20,
       align: 'center',
-      color: 'red',
-      pos: { x: 0, y: 0 }
+      color: 'white',
+      stroke: 'black',
+      font: 'Impact',
+      pos: { x: 0, y: 0 },
+      isDrag: false
     }
   ]
 }
@@ -116,4 +124,19 @@ function sizeDown() {
 function alignCurrLine(txt) {
   const currLine = getCurrLine()
   currLine.align = txt
+}
+
+function updateCurrLineFont(font) {
+  const currLine = getCurrLine()
+  currLine.font = font
+}
+
+function updateCurrLineStroke(color) {
+  const currLine = getCurrLine()
+  currLine.stroke = color
+}
+
+function updateCurrLineColor(color) {
+  const currLine = getCurrLine()
+  currLine.color = color
 }

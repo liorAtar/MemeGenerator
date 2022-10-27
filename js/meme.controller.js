@@ -27,7 +27,7 @@ function setSelectedTab(ev, selectedTabs) {
 
     switch (selectedTabs) {
         case 'Home':
-            document.querySelector('.editor').style.display = 'block'
+            document.querySelector('.editor').style.display = 'flex'
             document.querySelector('.gallery').style.display = 'none'
             break
         case 'Gallery':
@@ -100,19 +100,19 @@ function textInputChanged(ev) {
  * @param {*} x 
  * @param {*} y 
  */
-function drawText({ txt, pos, size, color, align }) {
+function drawText({ txt, pos, size, color, stroke, font, align }) {
     // const currLine = getCurrLine()
     gCtx.lineWidth = 1
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = stroke
     gCtx.fillStyle = color
 
     gCtx.textAlign = align
-    gCtx.font = `${size}px Impact`
+    gCtx.font = `${size}px ${font}`
 
     var lineHeight = size * 1.286;
-    gCtx.fillText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 2)) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 2)) // Draws (strokes) a given text at the given (x, y) position.
-
+    gCtx.fillText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 3)) // Draws (fills) a given text at the given (x, y) position.
+    gCtx.strokeText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 3)) // Draws (strokes) a given text at the given (x, y) position.
+    gCtx.strokeStyle = 'black'
     gCtx.strokeRect(pos.x, pos.y, gElCanvas.width, lineHeight);
 }
 
@@ -166,9 +166,9 @@ function onDown(ev) {
     document.body.style.cursor = 'grab'
     console.log('ev', ev)
 
-    const pos = getEvPos(ev)
     const lineIdx = isClicked(ev)
     if (lineIdx < 0) return
+    const pos = getEvPos(ev)
     setCurrLine(lineIdx)
     console.log('entered')
     setCurrLineDrag(true)

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <title>Document</title>
 </head>
+
 <body onload="onInit()">
     <header>
         <div class="logo" onclick="setSelectedTab(this, 'Home')">Blogin</div>
@@ -18,35 +20,45 @@
         </nav>
     </header>
 
-    <section class="editor flex"> 
+    <section class="editor flex">
         <div class="canvas-container">
-            <canvas
-              id="my-canvas"
-              height="450"
-              width="450"
-            ></canvas>
-          </div>
-          <div class="edit-canvas">
-            <input class="txt-input" type="text" placeholder="Enter Text" oninput="textInputChanged(this)" onfocusout=""/>
-            <div class="text-prefs flex">
+            <canvas id="my-canvas" height="450" width="450"></canvas>
+        </div>
+        <div class="edit-canvas">
+            <input class="txt-input" type="text" placeholder="Enter Text" oninput="textInputChanged(this)"
+                onfocusout="" />
+            <div class="txt-prefs flex">
                 <button onclick="moveUp()">Up</button>
                 <button onclick="moveDown()">Down</button>
                 <button onclick="addLine()">+</button>
                 <button onclick="nextLine()">Switch</button>
                 <button onclick="deleteSelectedLine()">Delete</button>
             </div>
-            <div class="text-styles">
+            <div class="txt-styles">
                 <button onclick="sizeUpText()">A+</button>
                 <button onclick="sizeDownText()">A-</button>
                 <button onclick="alignLeft()">↞</button>
                 <button onclick="alignCenter()">↕</button>
                 <button onclick="alignRight()">↠</button>
+                <input list="fonts" name="font" id="font" placeholder="Select Font" value="Impact" oninput="changeFont(this)">
+                <datalist id="fonts">
+                    <option value="Impact">
+                    <option value="Ariel">
+                </datalist>
+                <div class="stroke relative inline">
+                    <button><i>Stroke</i></button>
+                    <input type="color" class="color-palette" value="#ff0000" oninput="changeStroke(this)"/>
+                </div>
+                <div class="fill relative inline">
+                    <button><i>Fill</i></button>
+                    <input type="color" class="color-palette" value="#ff0000" oninput="changeColor(this)"/>
+                </div>
             </div>
-          </div>
+        </div>
     </section>
 
     <section class="gallery">
-        <div class="imgs grid">
+        <div class="grid-container">
 
         </div>
     </section>
@@ -56,4 +68,5 @@
     <script src="js/prefs.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
 </body>
+
 </html>
