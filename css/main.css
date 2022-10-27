@@ -13,7 +13,7 @@
     /* BP */
     --l: 1060px;
     --m: 860px;
-    --s: 800px;
+    --s: 600px;
 }
 
 body {
@@ -73,8 +73,8 @@ body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-auto-rows: 150px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 20vw;
     gap: 5px;
 }
 
@@ -134,5 +134,62 @@ body {
     .edit-canvas {
         width: 90%;
         margin: auto;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 20vw;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 700px) {
+    .editor {
+        width: 90vw;
+        margin: auto;
+        display: block;
+    }
+
+    .canvas-container {
+        height: auto;
+        margin: auto;
+    }
+
+    .edit-canvas {
+        width: 90%;
+        margin: auto;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 30vw;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 500px) {
+    .editor {
+        width: 90vw;
+        margin: auto;
+        display: block;
+    }
+
+    .canvas-container {
+        height: auto;
+        margin: auto;
+    }
+
+    .edit-canvas {
+        width: 90%;
+        margin: auto;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: 40vw;
+        gap: 5px;
     }
 }
