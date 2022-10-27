@@ -81,6 +81,7 @@ body {
 .grid-item {
     height: -webkit-fill-available;
     margin: auto;
+    object-fit: cover;
 }
 
 /* editor */
