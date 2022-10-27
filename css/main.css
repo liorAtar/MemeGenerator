@@ -163,6 +163,10 @@ input {
     background-color: var(--clr7);
 }
 
+.fonts{
+    border-radius: 10px;
+}
+
 .txt-prefs {
     gap: 5px
 }
