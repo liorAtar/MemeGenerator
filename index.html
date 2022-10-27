@@ -40,19 +40,24 @@
                 <button onclick="alignLeft()">↞</button>
                 <button onclick="alignCenter()">↕</button>
                 <button onclick="alignRight()">↠</button>
-                <input list="fonts" name="font" id="font" placeholder="Select Font" value="Impact" oninput="changeFont(this)">
+                <input list="fonts" name="font" id="font" placeholder="Select Font" value="Impact"
+                    oninput="changeFont(this)">
                 <datalist id="fonts">
                     <option value="Impact">
                     <option value="Ariel">
                 </datalist>
                 <div class="stroke relative inline">
                     <button><i>Stroke</i></button>
-                    <input type="color" class="color-palette" value="#ff0000" oninput="changeStroke(this)"/>
+                    <input type="color" class="color-palette" value="#ff0000" oninput="changeStroke(this)" />
                 </div>
                 <div class="fill relative inline">
                     <button><i>Fill</i></button>
-                    <input type="color" class="color-palette" value="#ff0000" oninput="changeColor(this)"/>
+                    <input type="color" class="color-palette" value="#ff0000" oninput="changeColor(this)" />
                 </div>
+            </div>
+            <div class="export">
+                <button>Share</button>
+                <a href="#" class="btn download" onclick="downloadMeme()" download="my-img.jpg">Download as jpeg</a>
             </div>
         </div>
     </section>
@@ -66,6 +71,7 @@
     <script src="js/services/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/prefs.controller.js"></script>
+    <script src="js/export.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
 </body>
 

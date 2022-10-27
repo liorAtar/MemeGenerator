@@ -4,6 +4,7 @@ let gSelectedTab = 'home'
 let gElCanvas
 let gCtx
 let gInitPos
+let gIsDownloadOn = false
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
 function onInit() {
@@ -100,7 +101,7 @@ function textInputChanged(ev) {
  * @param {*} x 
  * @param {*} y 
  */
-function drawText({ txt, pos, size, color, stroke, font, align }) {
+function drawText({ txt, pos, size, color, stroke, font, align, isDrag }) {
     // const currLine = getCurrLine()
     gCtx.lineWidth = 1
     gCtx.strokeStyle = stroke
@@ -112,8 +113,11 @@ function drawText({ txt, pos, size, color, stroke, font, align }) {
     var lineHeight = size * 1.286;
     gCtx.fillText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 3)) // Draws (fills) a given text at the given (x, y) position.
     gCtx.strokeText(txt, pos.x + (gElCanvas.width / 2), pos.y + lineHeight / 2 + (size / 3)) // Draws (strokes) a given text at the given (x, y) position.
-    gCtx.strokeStyle = 'black'
-    gCtx.strokeRect(pos.x, pos.y, gElCanvas.width, lineHeight);
+    
+    if(isDrag){
+        gCtx.strokeStyle = 'black'
+        gCtx.strokeRect(pos.x, pos.y, gElCanvas.width, lineHeight);
+    }
 }
 
 const calcFontMetrics = (ctx, text) => {
@@ -211,6 +215,7 @@ function onMove(ev) {
 function onUp() {
     setCurrLineDrag(false)
     document.body.style.cursor = 'grab'
+    renderCanvas()
 }
 
 function getEvPos(ev) {

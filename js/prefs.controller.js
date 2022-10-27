@@ -1,7 +1,12 @@
 'use-strict'
 
 function addLine() {
-    createLine({ x: 0, y: 0 })
+    const meme = getMeme()
+
+    if(meme.lines.length === 0) createLine({ x: 0, y: 0 })
+    else if(meme.lines.length === 1) createLine({ x: 0, y: gElCanvas.height - (20 * 1.286) })
+    else if(meme.lines.length > 1) createLine({ x: 0, y: (gElCanvas.height / 2) - (20 * 1.286) })
+    
     renderLine()
     document.querySelector('.txt-input').value = ''
     document.querySelector('.txt-input').placeholder = 'Enter Text'
