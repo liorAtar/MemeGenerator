@@ -194,7 +194,7 @@ body {
     }
 
     .grid-item{
-        width: 100px;
+        width: 100vw;
         height: 20vh;
     }
 }
