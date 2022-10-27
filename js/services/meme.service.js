@@ -63,7 +63,7 @@ function createLine(pos) {
 }
 
 function getCurrLine() {
-  return gMeme.lines[gMeme.selectedLineIdx]
+  return gMeme.lines.length && gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function setCurrLine(idx) {

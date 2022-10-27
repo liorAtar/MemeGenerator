@@ -77,7 +77,7 @@ function initialPos() {
  */
 function renderMeme(img) {
     var meme = getMeme()
-    var canvasHeight = (img.height * gElCanvas.width) / img.width
+    var canvasHeight = (img.height * gElCanvas.width) / img.width 
     gElCanvas.height = canvasHeight
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 

@@ -1,4 +1,28 @@
+:root {
+    /* pallet */
+    --clr8: #f0f0f0;
+    --clr7: #ebeef3;
+    --clr6: #19a59f;
+    --clr5: #1e7cd3;
+    --clr4: #5970c1;
+    --clr3: #8f44bb;
+    --clr2: #3e4b68;
+    --clr1: #3d3d3d;
+    --clr0: #22252c;
+
+    /* BP */
+    --l: 1060px;
+    --m: 860px;
+    --s: 800px;
+}
+
+body {
+    background-color: var(--clr0);
+}
+
 /* HELPERS */
+
+/* layout helpers */
 
 .flex {
     display: flex;
@@ -12,13 +36,37 @@
     position: relative;
 }
 
+/* list helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
 /* COMPONENTS */
 
+/* nav */
+
+.main-header {
+    /* width: 1257px;
+    height: 73px; */
+    height: 3rem;
+    margin-bottom: 1rem;
+    border-radius: 37px;
+    background-color: #5970c1;
+    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+}
+
+.main-nav {}
+
+/* color */
+
 .color-palette {
-    position:absolute; 
-    left:0;
-    top:0;
-    opacity:0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
 }
 
 /* grid */
@@ -42,7 +90,10 @@
 }
 
 .canvas-container {
-    width:40vw;
+    width: 40vw;
+    /* background-image: url('/img/meme-frame.png');
+    background-size: cover;
+    background-position: center; */
 }
 
 .edit-canvas {
@@ -67,19 +118,20 @@
 
 /* FOR MOBILE */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1000px) {
     .editor {
-        justify-content: center;
+        width: 90vw;
+        margin: auto;
         display: block;
     }
-    
+
     .canvas-container {
-        width: 80vw;
         height: auto;
         margin: auto;
     }
 
     .edit-canvas {
         width: 90%;
+        margin: auto;
     }
 }

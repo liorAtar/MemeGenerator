@@ -10,10 +10,10 @@
 </head>
 
 <body onload="onInit()">
-    <header>
+    <header class="main-header flex">
         <div class="logo" onclick="setSelectedTab(this, 'Home')">Blogin</div>
         <nav class="main-nav">
-            <ul class="">
+            <ul class="flex clean-list">
                 <li class="nav-item" onclick="setSelectedTab(this, 'Gallery')"><a href="#Gallery">Gallery</a></li>
                 <li class="nav-item" onclick="setSelectedTab(this, 'About')"><a href="#About">About</a></li>
             </ul>
@@ -22,7 +22,7 @@
 
     <section class="editor flex">
         <div class="canvas-container">
-            <canvas id="my-canvas" height="450" width="450"></canvas>
+            <canvas id="my-canvas" height="250" width="250"></canvas>
         </div>
         <div class="edit-canvas">
             <input class="txt-input" type="text" placeholder="Enter Text" oninput="textInputChanged(this)"
