@@ -4,8 +4,8 @@ function addLine() {
     const meme = getMeme()
 
     if(meme.lines.length === 0) createLine({ x: 0, y: 0 })
-    else if(meme.lines.length === 1) createLine({ x: 0, y: gElCanvas.height - (20 * 1.286) })
-    else if(meme.lines.length > 1) createLine({ x: 0, y: (gElCanvas.height / 2) - (20 * 1.286) })
+    else if(meme.lines.length === 1) createLine({ x: 0, y: gElCanvas.height - (40 * 1.286) })
+    else if(meme.lines.length > 1) createLine({ x: 0, y: (gElCanvas.height / 2) - (40 * 1.286 /2) })
     
     renderLine()
     document.querySelector('.txt-input').value = ''
@@ -93,4 +93,16 @@ function changeColor(ev) {
     const color = ev.value
     updateCurrLineColor(color)
     renderCanvas()
+}
+
+function showEditorOne() {
+    document.querySelector('.editor-content-txt').style.opacity = 1
+    document.querySelector('.editor-content-stickers').style.opacity = 0
+    document.querySelector('.editor-content-stickers').style.top = '-100%'
+}
+
+function showEditorTwo() {
+    document.querySelector('.editor-content-txt').style.opacity = 0
+    document.querySelector('.editor-content-txt').style.top = '-100%'
+    document.querySelector('.editor-content-stickers').style.opacity = 1
 }

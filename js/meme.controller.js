@@ -7,10 +7,11 @@ let gInitPos
 let gIsDownloadOn = false
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 
-function onInit() {
+function initMeme() {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
     document.querySelector('.gallery').style.display = 'none'
+    document.querySelector('.editor-content-stickers').style.opacity = 0
 
     resizeCanvas()
 
@@ -28,8 +29,9 @@ function setSelectedTab(ev, selectedTabs) {
 
     switch (selectedTabs) {
         case 'Home':
-            document.querySelector('.main-editor').style.display = 'block'
+            document.querySelector('.main-editor').style.display = 'flex'
             document.querySelector('.gallery').style.display = 'none'
+            initMeme()
             break
         case 'Gallery':
             document.querySelector('.gallery').style.display = 'block'
@@ -80,6 +82,7 @@ function renderMeme(img) {
     var meme = getMeme()
     var canvasHeight = (img.height * gElCanvas.width) / img.width
     gElCanvas.height = canvasHeight
+    gElCanvas.width = gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
     meme.lines.map(line => drawText(line))

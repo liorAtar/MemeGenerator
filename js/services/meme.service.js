@@ -29,8 +29,8 @@ var gMeme = {
   selectedLineIdx: 0,
   lines: [
     {
-      txt: '',
-      size: 20,
+      txt: 'Enter Text',
+      size: 40,
       align: 'center',
       color: 'white',
       stroke: 'black',
@@ -47,8 +47,8 @@ function getMeme() {
 
 function createLine(pos) {
   var line = {
-    txt: '',
-    size: 20,
+    txt: 'Enter Text',
+    size: 40,
     align: 'center',
     color: 'white',
     stroke: 'black',
@@ -75,8 +75,8 @@ function resetMeme() {
   gMeme.selectedLineIdx = 0
   gMeme.lines = [
     {
-      txt: '',
-      size: 20,
+      txt: 'Enter Text',
+      size: 40,
       align: 'center',
       color: 'white',
       stroke: 'black',
@@ -113,12 +113,16 @@ function deleteLine(idx) {
 
 function sizeUp() {
   const currLine = getCurrLine()
-  currLine.size += 5
+  if(currLine.size < 80) {
+    currLine.size += 5
+  }
 }
 
 function sizeDown() {
   const currLine = getCurrLine()
-  currLine.size -= 5
+  if(currLine.size > 20) {
+    currLine.size -= 5
+  }
 }
 
 function alignCurrLine(txt) {

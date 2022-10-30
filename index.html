@@ -21,69 +21,109 @@
         </nav>
     </header>
 
-    <main class="main-editor">
-        <section class="editor">
-            <div class="canvas-container">
-                <canvas id="my-canvas" height="250" width="250"></canvas>
-            </div>
-            <div class="edit-canvas">
-                <input class="txt-input" type="text" placeholder="Enter Text" oninput="textInputChanged(this)"
-                    onfocusout="" />
-                <div class="txt-prefs flex">
-                    <button class="btn up-btn" onclick="moveUp()"><i class="fa fa-3x fa-arrow-up"></i></button>
-                    <button class="btn down-btn" onclick="moveDown()"><i class="fa fa-3x fa-arrow-down"></i></button>
-                    <button class="btn add-btn" onclick="addLine()"><i class="fa fa-3x fa-plus"></i></button>
-                    <button class="btn switch-btn max-content" onclick="nextLine()">
-                        <i class="fa fa-3x fa-arrow-up"></i>
-                        <i class="fa fa-3x fa-arrow-down"></i>
-                    </button>
-                    <button class="btn delete-btn" onclick="deleteSelectedLine()"><i class="fa fa-3x fa-trash"></i></button>
+    <main class="main-content">
+        <section class="main-editor">
+            <div class="editor">
+                <div class="canvas-container">
+                    <canvas id="my-canvas" height="450" width="450"></canvas>
                 </div>
-                <div class="txt-styles">
-                    <div class="styles-line">
-                        <button class="btn-line-style" onclick="sizeUpText()"><img class="btn-icon" src="img/a-plus.png" alt=""></button>
-                        <button class="btn-line-style" onclick="sizeDownText()"><img class="btn-icon" src="img/a-minus-result.png" alt=""></button>
-                        <button class="btn-line-style" onclick="alignLeft()"><i class="fa fa-3x fa-align-left"></i></button>
-                        <button class="btn-line-style" onclick="alignCenter()"><i class="fa fa-3x fa-align-center"></i></button>
-                        <button class="btn-line-style" onclick="alignRight()"><i class="fa fa-3x fa-align-right"></i></button>
-                    </div>
-                    <div class="styles-line">
-                        <input class="fonts" list="fonts" name="font" id="font" placeholder="Select Font" value="Impact"
-                            oninput="changeFont(this)">
-                        <datalist id="fonts">
-                            <option value="Impact">
-                            <option value="Ariel">
-                        </datalist>
-                        <div class="stroke relative inline">
-                            <input type="color" class="color-palette" value="#ff0000" oninput="changeStroke(this)" />
-                            <button class="btn-line-style"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="35" viewBox="0 0 20 60"><g><g><g><text dominant-baseline="text-before-edge" style="text-transform:uppercase" fill="#22252c" font-family="'Poppins-SemiBold','Poppins-SemiBold'" font-size="51.64" font-style="none" font-weight="400" text-decoration="underline"><tspan style="font-kerning:normal">s</tspan></text></g></g></g></svg></button>
+                <div class="edit-canvas">
+                    <!-- <button class="btn-move" onclick="showEditorOne()">∧</button> -->
+                    <div class="editor-content">
+                        <div class="editor-transition editor-content-txt">
+                            <input class="txt-input" type="text" placeholder="Enter Text"
+                                oninput="textInputChanged(this)" onfocusout="" />
+                            <div class="txt-prefs flex">
+                                <button class="btn up-btn btn-icon" onclick="moveUp()"><i
+                                        class="fa fa-2x fa-arrow-up"></i></button>
+                                <button class="btn down-btn btn-icon" onclick="moveDown()"><i
+                                        class="fa fa-2x fa-arrow-down"></i></button>
+                                <button class="btn add-btn btn-icon" onclick="addLine()"><i
+                                        class="fa fa-2x fa-plus"></i></button>
+                                <button class="btn switch-btn max-content btn-icon" onclick="nextLine()">
+                                    <i class="fa fa-2x fa-arrow-up"></i>
+                                    <i class="fa fa-2x fa-arrow-down"></i>
+                                </button>
+                                <button class="btn delete-btn btn-icon" onclick="deleteSelectedLine()"><i
+                                        class="fa fa-2x fa-trash"></i></button>
+                            </div>
+                            <div class="txt-styles">
+                                <div class="styles-line">
+                                    <button class="btn-line-style btn-icon" onclick="sizeUpText()"><img class="img-icon"
+                                            src="img/a-plus.png" alt=""></button>
+                                    <button class="btn-line-style btn-icon" onclick="sizeDownText()"><img
+                                            class="img-icon" src="img/a-minus-result.png" alt=""></button>
+                                    <button class="btn-line-style btn-icon" onclick="alignLeft()"><i
+                                            class="fa fa-2x fa-align-left"></i></button>
+                                    <button class="btn-line-style btn-icon" onclick="alignCenter()"><i
+                                            class="fa fa-2x fa-align-center"></i></button>
+                                    <button class="btn-line-style btn-icon" onclick="alignRight()"><i
+                                            class="fa fa-2x fa-align-right"></i></button>
+                                </div>
+                                <div class="styles-line">
+                                    <input class="fonts" list="fonts" name="font" id="font" placeholder="Select Font"
+                                        value="Impact" oninput="changeFont(this)">
+                                    <datalist id="fonts">
+                                        <option value="Impact">
+                                        <option value="Ariel">
+                                    </datalist>
+                                    <div class="stroke relative inline btn-icon">
+                                        <input type="color" class="color-palette" value="#ff0000"
+                                            oninput="changeStroke(this)" />
+                                        <button class="btn-line-style btn-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                                width="20" height="35" viewBox="5 10 20 70">
+                                                <g>
+                                                    <g>
+                                                        <g><text dominant-baseline="text-before-edge"
+                                                                style="text-transform:uppercase" fill="#22252c"
+                                                                font-family="'Poppins-SemiBold','Poppins-SemiBold'"
+                                                                font-size="51.64" font-style="none" font-weight="400"
+                                                                text-decoration="underline">
+                                                                <tspan style="font-kerning:normal">s</tspan>
+                                                            </text></g>
+                                                    </g>
+                                                </g>
+                                            </svg></button>
+                                    </div>
+                                    <div class="fill relative inline btn-icon">
+                                        <input type="color" class="color-palette" value="#ff0000"
+                                            oninput="changeColor(this)" />
+                                        <button class="btn-line-style btn-icon"><img class="img-icon"
+                                                src="img/paint-board-and-brush.png" alt=""></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="export">
+                                <button class="btn-export btn-share" onclick="uploadImg()">
+                                    <a class="share" title="Share on Facebook" target="_blank">
+                                        Share
+                                    </a>
+                                </button>
+                                <button class="btn-export btn-download">
+                                    <a class="download" href="#" onclick="downloadMeme()" download="my-img.jpg">Download
+                                        as
+                                        jpeg</a>
+                                </button>
+                                <a class="user-msg"></a>
+                            </div>
                         </div>
-                        <div class="fill relative inline">
-                            <input type="color" class="color-palette" value="#ff0000" oninput="changeColor(this)" />
-                            <button class="btn-line-style"><img class="btn-icon" src="img/paint-board-and-brush.png" alt=""></button>
+                        <div class="editor-transition editor-content-stickers">
+                            ❤️😂👌💣🍒💕😘
                         </div>
                     </div>
-                </div>
-                <div class="export">
-                    <button class="btn-export btn-share" onclick="uploadImg()">
-                        <a class="share" title="Share on Facebook" target="_blank">
-                            Share   
-                         </a>
-                    </button>
-                    <button class="btn-export btn-download">
-                        <a class="download" href="#" onclick="downloadMeme()" download="my-img.jpg">Download as jpeg</a>
-                    </button>
-                    <a class="user-msg"></a>
+                    <!-- <button class="btn-move" onclick="showEditorTwo()">∨</button> -->
                 </div>
             </div>
         </section>
+
+        <section class="gallery">
+            <div class="grid-container">
+
+            </div>
+        </section>
+
+        <footer class="main-footer">Meme Generator by Lior Atar 2022@</footer>
     </main>
-
-    <section class="gallery">
-        <div class="grid-container">
-
-        </div>
-    </section>
 
     <script src="js/services/meme.service.js"></script>
     <script src="js/meme.controller.js"></script>
